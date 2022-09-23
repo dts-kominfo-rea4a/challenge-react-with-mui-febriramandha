@@ -1,5 +1,6 @@
 // Kalian bisa menambahkan CSS di src/components/Header.css
 // atau langsung tambahkan dengan sx={{}}
+import {Typography, Divider} from "@mui/material";
 import React from 'react';
 
 // Header berisi judul dan subtitle
@@ -7,7 +8,12 @@ import React from 'react';
 // Subtitle: Your friendly contact app
 const Header = () => {
   return (
-    <></>
+    <>
+      <Typography variant="h2" style={{margin: "0.5em 0em"}}>Call a Friend</Typography>
+      <Divider>
+        <Typography variant="subtitle1" gutterBottom>Your friendly contact app</Typography>
+      </Divider>
+    </>
   );
 };
 
