@@ -9,61 +9,39 @@ import {Card, CardContent, CardActions, Button, TextField} from "@mui/material";
 const ContactForm = ({fnTambahKontak}) => {
     // Form berisi name, phone, email, dan photo url
     // Buatlah state newContact berupa objek sesuai dengan data yang ada
-    const [inputName, setName] = useState("");
-    const [inputPhone, setPhone] = useState("");
-    const [inputEmail, setEmail] = useState("");
-    const [inputPhoto, setPhoto] = useState("");
 
-    // fungsi untuk menghandle perubahan dari si input
-    const InputOnChangeName = (event) => {
-        setName(event.target.value);
+    const initialState = {
+        name: "",
+        phone: "",
+        email: "",
+        photo: "",
     };
-    const InputOnChangePhone = (event) => {
-        setPhone(event.target.value);
-    }
-    const InputOnChangeEmail = (event) => {
-        setEmail(event.target.value);
-    }
-    const InputOnChangePhoto = (event) => {
-        setPhoto(event.target.value);
-    }
 
-    const formOnSubmitHandler = (event) => {
-        // supaya tidak refresh
-        event.preventDefault();
-
-        const newContact = {
-            name : inputName,
-            phone : inputPhone,
-            email : inputEmail,
-            photo : inputPhoto,
-        };
-
+    const [newContact, setNewContact] = useState(initialState);
+    const handleChange = (name, value) => {
+        setNewContact({ ...newContact, [name]: value });
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
         fnTambahKontak(newContact);
-
-        // kosongkan isi dari input data
-        setName("");
-        setPhone("");
-        setEmail("");
-        setPhoto("");
+        setNewContact(initialState);
     };
 
     return (
         <> 
-            <Card sx={{ minWidth: 400, backgroundColor: 'rgb(227 213 173 / 28%)', margin:"5em", }}>
-                <CardContent>
-                    <form style={{margin: "0.5em 0"}} onSubmit={formOnSubmitHandler}>
-                        <TextField fullWidth label="Name *" variant="filled" value={inputName} onChange={InputOnChangeName} />
-                        <TextField fullWidth label="Phone *" variant="filled" margin="normal" value={inputPhone} onChange={InputOnChangePhone} />
-                        <TextField fullWidth label="Email *" variant="filled" margin="normal" value={inputEmail} onChange={InputOnChangeEmail} />
-                        <TextField fullWidth label="Photo URL *" variant="filled" margin="normal" value={inputPhoto} onChange={InputOnChangePhoto} />
-                    </form>
-                </CardContent>
-                <CardActions>
-                    <Button variant="text" type="submit" color="success">ADD NEW</Button>
-                </CardActions>
+            <Card sx={{ minWidth: 300, backgroundColor: 'rgb(227 213 173 / 28%)', margin:"5em", }}>
+                <form action="" onSubmit={handleSubmit}>
+                    <CardContent>
+                            <TextField type="text" fullWidth label="Name" variant="filled" name="nama" value={newContact.name} onChange={(e) => handleChange("name", e.target.value)} required />
+                            <TextField type="text" fullWidth label="Phone" variant="filled" margin="normal" name="phone" value={newContact.phone} onChange={(e) => handleChange("phone", e.target.value)} required />
+                            <TextField type="text" fullWidth label="Email" variant="filled" margin="normal" name="email" value={newContact.email} onChange={(e) => handleChange("email", e.target.value)} required />
+                            <TextField type="text" fullWidth label="Photo URL" variant="filled" margin="normal" name="photo" value={newContact.photo} onChange={(e) => handleChange("photo", e.target.value)} required />
+                    </CardContent>
+                    <CardActions>
+                        <Button variant="text" type="submit" color="success">ADD NEW</Button>
+                    </CardActions>
+                </form>
             </Card>
-
         </>
     );
 };

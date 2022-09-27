@@ -9,7 +9,7 @@ import React from 'react';
 const Header = () => {
   return (
     <>
-      <Typography variant="h2" style={{margin: "0.5em 0em"}}>Call a Friend</Typography>
+      <Typography variant="h2" style={{marginTop: "0.5em"}}>Call a Friend</Typography>
       <Divider>
         <Typography variant="subtitle1" gutterBottom>Your friendly contact app</Typography>
       </Divider>

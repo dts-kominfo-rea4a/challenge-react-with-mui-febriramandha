@@ -17,31 +17,24 @@ const App = () => {
   // Masukkan contacts yang sudah didapat dalam JSON sebagai initial state
   const [contacts, setContacts] = useState(contactsJSON);
   // Buatlah handler untuk menambahkan kontak baru yang akan dikirim ke ContactForm
-  const tambahKontak = (kontakBaru) => {
-    const objKontakBaru = {
-        name: kontakBaru,
-        phone: kontakBaru,
-        email: kontakBaru,
-        photo: kontakBaru,
-    };
 
-    setContacts([...contacts, objKontakBaru]);
-};
+  const handleNewContact = (value) => {
+    setContacts([...contacts, value]);
+  };
 
   return (
     <div className="App">
       <Header />
-
         <Grid container spacing={2} columns={12}>
           <Grid md={6}>
-            <ContactForm fnTambahKontak={tambahKontak} />
+            <ContactForm fnTambahKontak={(value) => handleNewContact(value)} />
           </Grid>
           <Grid md={6}>
             <Contact data={contacts} />
           </Grid>
         </Grid>
 
-        <Typography variant="body1"  align="center" sx={{mb:"0.5em"}}>
+      <Typography variant="body1"  align="center" sx={{mb:"0.5em"}}>
           {'Copyright © '}
           {new Date().getFullYear()}{' - '}
             Febri Ramandha
