@@ -26,10 +26,10 @@ const App = () => {
     <div className="App">
       <Header />
         <Grid container spacing={2} columns={12}>
-          <Grid md={6}>
+          <Grid>
             <ContactForm fnTambahKontak={(value) => handleNewContact(value)} />
           </Grid>
-          <Grid md={6}>
+          <Grid>
             {/* <Contact data={contacts} /> */}
 
             {contacts.map((contact, i) => (

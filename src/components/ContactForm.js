@@ -29,7 +29,7 @@ const ContactForm = ({fnTambahKontak}) => {
 
     return (
         <> 
-            <Card sx={{ minWidth: 300, backgroundColor: 'rgb(227 213 173 / 28%)', margin:"5em", }}>
+            <Card sx={{ minWidth: 300, maxWidth: 400, backgroundColor: 'rgb(227 213 173 / 28%)', margin:"5em", }}>
                 <form action="" onSubmit={handleSubmit}>
                     <CardContent>
                             <TextField type="text" fullWidth label="Name" variant="filled" name="nama" value={newContact.name} onChange={(e) => handleChange("name", e.target.value)} required />
