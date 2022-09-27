@@ -30,7 +30,12 @@ const App = () => {
             <ContactForm fnTambahKontak={(value) => handleNewContact(value)} />
           </Grid>
           <Grid md={6}>
-            <Contact data={contacts} />
+            {/* <Contact data={contacts} /> */}
+
+            {contacts.map((contact, i) => (
+                <Contact key={i} data={contact} />
+            ))}
+
           </Grid>
         </Grid>
 
